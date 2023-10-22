@@ -19,8 +19,15 @@
  *                     can fit a 32-bit value.) and the maximum possible length of the array is SHRT_MAX.
  *                     These limitations can be overcome by modifying certain variables in the linear_sorting.h file.
  *
- *  MISRA: Major rules from the MISRA standard that have been violated:
- *         1. Rule 20.9 - The input/output library <stdio.h> shall not be used in production code. (printf)
+ *  MISRA: Rules from the MISRA standard that have been violated:
+ *         1. Rule 20.9 - The input/output library <stdio.h> shall not be used in production code. (printf, scanf)
+ *         2. Rule 20.4 - Dynamic heap memory allocation shall not be used. (calloc)
+ *         3. Rule 10.1 - The value of an expression of integer type shall not be implicitly converted to a different underlying type if
+ *         4. Rule 20.12 - The time handling functions of library <time.h> shall not be used.
+ *         5. Rule 17.4 - Array indexing shall be the only allowed form of pointer arithmetic. (linear_sorting.c)
+ *         6. Rule 14.9 - An if (expression) construct shall be followed by a compound statement. The else keyword shall be followed by either a
+ *                        compound statement, or another if statement.
+ *         7. Rule 5.7 - No identifier name should be reused.
  *
  * */
 
@@ -30,16 +37,34 @@
 
 static void generateNumbers(array_t* array, length_array_t size);
 
-int main() {
+int main(void) {
 
-    length_array_t size = 10000;
-    array_t array[size];
+
+    array_t* array;
+    length_array_t size = 120;
+
+    /* User enters length of the array */
+    #if 1 
+        int_least64_t input_size;
+        do{
+            printf("Enter size of array: ");
+            scanf("%" SCNdLEAST64, &input_size);
+            printf("\n");
+        } while(input_size > MAX_ARRAY_LENGTH || input_size <= 0);
+
+        size = (length_array_t) input_size;
+    #endif
+
+    array = (array_t*) calloc(size, sizeof(array_t));
 
     generateNumbers(array, size);
 
     /* Sort array using radix sort */
     radixSort(array, size);
     printArray(array, size);
+
+    /* Free alocated memory */
+    free(array);
 
     return 0;
 }

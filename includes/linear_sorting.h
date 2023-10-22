@@ -7,10 +7,10 @@
 #include <limits.h>
 
 #define FORMAT_SPECIFIER PRIdLEAST32
-#define MAX_ARRAY_LENGTH SHRT_MAX
+#define MAX_ARRAY_LENGTH INT32_MAX
 #define MAX_ARRAY_VALUE INT32_MAX
 
-typedef int_least32_t array_t;
+typedef int_least16_t array_t;
 typedef int_least32_t length_array_t;
 
 /*
@@ -41,7 +41,7 @@ void radixSort(array_t* array, length_array_t size);
  * @param array - Array that we are printing.
  * @param size - Length of the array.
  * */
-void printArray(array_t arr[], int size);
+void printArray(array_t arr[], length_array_t size);
 
 
 #endif

@@ -50,7 +50,7 @@ static void countingSort(array_t* array, length_array_t size, array_t place) {
     }
 
     /* Sorting array by digit on place 'place' */
-    for(length_array_t  i = size - 1; i >= 0; i--)
+    for (length_array_t  i = size - 1; i >= 0; i--)
     {
         array_t index = (array[i] / place) % 10;
         output[counting_array[index] - 1] = array[i];
@@ -72,7 +72,7 @@ void radixSort(array_t* array, length_array_t size) {
     }
 }
 
-void printArray(array_t arr[], int size) {
+void printArray(array_t arr[], length_array_t size) {
     for (int i = 0; i < size; i++)
     {
         printf("%" FORMAT_SPECIFIER " ", arr[i]);
