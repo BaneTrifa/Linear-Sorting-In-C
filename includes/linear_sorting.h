@@ -5,12 +5,13 @@
 #include <stdint.h>
 #include <inttypes.h>
 #include <limits.h>
+#include <stdlib.h>
 
 #define FORMAT_SPECIFIER PRIdLEAST32
 #define MAX_ARRAY_LENGTH INT32_MAX
 #define MAX_ARRAY_VALUE INT32_MAX
 
-typedef int_least16_t array_t;
+typedef int_least32_t array_t;
 typedef int_least32_t length_array_t;
 
 /*
