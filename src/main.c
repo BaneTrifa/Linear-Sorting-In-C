@@ -24,8 +24,8 @@
  *         1. Rule 20.9 - The input/output library <stdio.h> shall not be used in production code. (printf, scanf)
  *         2. Rule 20.4 - Dynamic heap memory allocation shall not be used. (calloc) - Violated because if we use static allocation 
  *                        for array we can only put couple millions of elements.
- *         3. Rule 10.1 - The value of an expression of integer type shall not be implicitly converted to a different underlying type if it is not a 
- *                        conversion to a wider integer type of the same signedness
+ *         3. Rule 10.1 - The value of an expression of integer type shall not be implicitly converted to a different underlying type
+ *                        if it is not a conversion to a wider integer type of the same signedness
  *         4. Rule 20.12 - The time handling functions of library <time.h> shall not be used.
  *         5. Rule 17.4 - Array indexing shall be the only allowed form of pointer arithmetic.
  *         6. Rule 5.7 - No identifier name should be reused.
@@ -37,15 +37,16 @@
 
 static void generateNumbers(array_t* array, length_array_t size);
 
-int main(void) {
-
+int main(void)
+{
     array_t* array;
-    length_array_t size = 120;
+    length_array_t size;
 
     /* User enters length of the array */
     #if 1 
         int_least64_t input_size;
-        do{
+        do
+        {
             printf("Enter size of array (max. %d): ", MAX_ARRAY_LENGTH);
             scanf("%" SCNdLEAST64, &input_size);
             printf("\n");
@@ -64,7 +65,7 @@ int main(void) {
     t = clock() - t; 
 
     /* Print sorted array and execution time*/
-    printArray(array, size);
+    //printArray(array, size);
     printf("Took %lf seconds to execute \n", ((double)t)/CLOCKS_PER_SEC); 
 
     /* Free alocated memory */
@@ -73,10 +74,12 @@ int main(void) {
     return 0;
 }
 
-static void generateNumbers(array_t* array, length_array_t size) {
+static void generateNumbers(array_t* array, length_array_t size) 
+{
     srand(time(0));
 
-    for(length_array_t i = 0 ; i < size ; i++ ) {
+    for (length_array_t i = 0 ; i < size ; i++ ) 
+    {
         array[i] = MAX_ARRAY_VALUE / INT16_MAX * rand();;
     }
 }

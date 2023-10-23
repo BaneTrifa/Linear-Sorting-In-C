@@ -1,11 +1,13 @@
 #include "linear_sorting.h"
 
-static int_least8_t getMaxDigits(const array_t* array, length_array_t size) {
+static int_least8_t getMaxDigits(const array_t* array, length_array_t size) 
+{
     array_t max = array[0];
 
     for (length_array_t i = 1; i < size; i++)
     {
-        if (array[i] > max) {
+        if (array[i] > max) 
+        {
             max = array[i];
         }
     }
@@ -20,7 +22,8 @@ static int_least8_t getMaxDigits(const array_t* array, length_array_t size) {
     return digits;
 }
 
-static void countingSort(array_t* array, length_array_t size, array_t place) {
+static void countingSort(array_t* array, length_array_t size, array_t place) 
+{
     /* Output array */
     array_t* output = (array_t*) calloc(size, sizeof(array_t));
 
@@ -28,15 +31,17 @@ static void countingSort(array_t* array, length_array_t size, array_t place) {
     array_t max = (array[0] / place) % 10;
     for (length_array_t i = 1; i < size; i++)
     {
-        if ((array[i] / place) % 10 >max) {
+        if ((array[i] / place) % 10 > max) 
+        {
             max = (array[i] / place) % 10;
         }
     }
 
     /* Making counting array */
     length_array_t counting_array[max + 1];
-    for (array_t i = 0; i <= max; i++)
+    for (array_t i = 0; i <= max; i++) {
         counting_array[i] = 0;
+    }
 
     /* Count frequency */
     for (length_array_t i = 0; i < size; i++)
@@ -59,13 +64,16 @@ static void countingSort(array_t* array, length_array_t size, array_t place) {
         counting_array[index]--;
     }
 
-    for (length_array_t i = 0; i < size; i++)
+    for (length_array_t i = 0; i < size; i++) 
+    {
         array[i] = output[i];
+    }
 
     free(output);
 }
 
-void radixSort(array_t* array, length_array_t size) {
+void radixSort(array_t* array, length_array_t size) 
+{
     int_least8_t max_digits = getMaxDigits(array, size);
 
     array_t place = 1;
@@ -76,7 +84,8 @@ void radixSort(array_t* array, length_array_t size) {
     }
 }
 
-void printArray(array_t arr[], length_array_t size) {
+void printArray(array_t arr[], length_array_t size) 
+{
     for (int i = 0; i < size; i++)
     {
         printf("%" FORMAT_SPECIFIER " ", arr[i]);
