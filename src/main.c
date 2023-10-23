@@ -63,7 +63,7 @@ int main(void) {
     t = clock() - t; 
 
     /* Print sorted array and execution time*/
-    //printArray(array, size);
+    printArray(array, size);
     printf("Took %lf seconds to execute \n", ((double)t)/CLOCKS_PER_SEC); 
 
     /* Free alocated memory */
