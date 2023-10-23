@@ -61,6 +61,8 @@ static void countingSort(array_t* array, length_array_t size, array_t place) {
 
     for (length_array_t i = 0; i < size; i++)
         array[i] = output[i];
+
+    free(output);
 }
 
 void radixSort(array_t* array, length_array_t size) {
