@@ -2,8 +2,8 @@
 
 static int_least8_t getMaxDigits(const array_t* array, length_array_t size) 
 {
+    /* Find maximum element */
     array_t max = array[0];
-
     for (length_array_t i = 1; i < size; i++)
     {
         if (array[i] > max) 
@@ -12,6 +12,7 @@ static int_least8_t getMaxDigits(const array_t* array, length_array_t size)
         }
     }
 
+    /* Count digits in the maximum element */
     int_least8_t digits = 0;
     while(max > 0)
     {
@@ -64,11 +65,13 @@ static void countingSort(array_t* array, length_array_t size, array_t place)
         counting_array[index]--;
     }
 
+    /* Transfer the temporary output array (sorted by the 'place' digit) into the original array. */
     for (length_array_t i = 0; i < size; i++) 
     {
         array[i] = output[i];
     }
 
+    /* Free alocated memory */
     free(output);
 }
 

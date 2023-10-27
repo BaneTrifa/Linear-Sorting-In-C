@@ -43,7 +43,7 @@ int main(void)
     length_array_t size;
 
     /* User enters length of the array */
-    #if 1 
+    #if 1
         int_least64_t input_size;
         do
         {
@@ -65,7 +65,7 @@ int main(void)
     t = clock() - t; 
 
     /* Print sorted array and execution time*/
-    //printArray(array, size);
+    printArray(array, size);
     printf("Took %lf seconds to execute \n", ((double)t)/CLOCKS_PER_SEC); 
 
     /* Free alocated memory */
@@ -78,8 +78,8 @@ static void generateNumbers(array_t* array, length_array_t size)
 {
     srand(time(0));
 
-    for (length_array_t i = 0 ; i < size ; i++ ) 
+    for (length_array_t i = 0; i < size ; i++ ) 
     {
-        array[i] = MAX_ARRAY_VALUE / INT16_MAX * rand();;
+        array[i] = (MAX_ARRAY_VALUE > INT16_MAX) ? ( MAX_ARRAY_VALUE / INT16_MAX * rand() ) : (rand() % MAX_ARRAY_VALUE);
     }
 }
